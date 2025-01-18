@@ -1,8 +1,7 @@
 from geometry import Point, Line
 
 class Cell():
-    def __init__(self, window):
-        self.win = window
+    def __init__(self, window=None):
         self.x1 = None
         self.y1 = None
         self.x2 = None
@@ -11,6 +10,7 @@ class Cell():
         self.wall_r = True
         self.wall_b = True
         self.wall_l = True
+        self.win = window
 
     def draw(self, x1, y1, x2, y2):
         if self.win is None:
