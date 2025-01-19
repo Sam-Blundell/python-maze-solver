@@ -32,7 +32,7 @@ class Cell():
         self.win.draw_line(l_line, "black" if self.wall_l else "white")
 
     def draw_move(self, to_cell, undo=False):
-        color = "red" if undo else "gray"
+        color = "gray" if undo else "red"
         start_point = Point(
             self.x1 + ((self.x2 - self.x1) / 2),
             self.y1 + ((self.y2 - self.y1) / 2),
