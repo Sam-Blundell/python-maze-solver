@@ -10,28 +10,26 @@ class Cell():
         self.wall_r = True
         self.wall_b = True
         self.wall_l = True
+        self.visited = False
         self.win = window
 
     def draw(self, x1, y1, x2, y2):
         if self.win is None:
             return
+        
         self.x1 = x1
         self.y1 = y1
         self.x2 = x2
         self.y2 = y2
 
-        if self.wall_t:
-            t_line = Line(Point(self.x1, self.y1), Point(self.x2, self.y1))
-            self.win.draw_line(t_line)
-        if self.wall_r:
-            r_line = Line(Point(self.x2, self.y1), Point(self.x2, self.y2))
-            self.win.draw_line(r_line)
-        if self.wall_b:
-            b_line = Line(Point(self.x1, self.y2), Point(self.x2, self.y2))
-            self.win.draw_line(b_line)
-        if self.wall_l:
-            l_line = Line(Point(self.x1, self.y1), Point(self.x1, self.y2))
-            self.win.draw_line(l_line)
+        t_line = Line(Point(self.x1, self.y1), Point(self.x2, self.y1))
+        r_line = Line(Point(self.x2, self.y1), Point(self.x2, self.y2))
+        b_line = Line(Point(self.x1, self.y2), Point(self.x2, self.y2))
+        l_line = Line(Point(self.x1, self.y1), Point(self.x1, self.y2))
+        self.win.draw_line(t_line, "black" if self.wall_t else "white")
+        self.win.draw_line(r_line, "black" if self.wall_r else "white")
+        self.win.draw_line(b_line, "black" if self.wall_b else "white")
+        self.win.draw_line(l_line, "black" if self.wall_l else "white")
 
     def draw_move(self, to_cell, undo=False):
         color = "red" if undo else "gray"
